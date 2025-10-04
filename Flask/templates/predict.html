@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Predict Productivity</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    /* Background image with overlay */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("https://img.freepik.com/free-vector/business-team-discussing-project_74855-4575.jpg") no-repeat center top;
+      background-size: cover;
+      background-attachment: fixed;
+      z-index: -2;
+    }
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.5); /* semi-transparent overlay */
+      z-index: -1;
+    }
+
+    /* Navbar (gradient style for consistency) */
+    .navbar {
+      background: linear-gradient(90deg, #004aad, #007bff);
+      padding: 0.8rem 1rem;
+      z-index: 5;
+    }
+    .navbar .navbar-brand {
+      color: #ffffff !important;
+      font-weight: bold;
+      font-size: 1.25rem;
+    }
+    .navbar .nav-link {
+      color: #fff !important;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .navbar .nav-link:hover,
+    .navbar .nav-link.active {
+      color: #ffd54f !important;
+    }
+    .navbar-toggler { border: none; }
+    .navbar-toggler-icon {
+      filter: brightness(0) invert(1); /* white toggler icon */
+    }
+
+    /* Form Container */
+    .form-container {
+      margin: 60px auto;
+      max-width: 650px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      box-shadow: 0 0 25px rgba(0,0,0,0.4);
+      position: relative;
+      z-index: 1;
+    }
+
+    .form-container h3 {
+      font-weight: 700;
+      color: #004aad;
+    }
+
+    /* Form button hover */
+    .btn-success {
+      transition: all 0.3s ease;
+      font-weight: 600;
+      padding: 10px 20px;
+    }
+    .btn-success:hover {
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .form-container {
+        margin: 20px;
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay -->
+  <div class="overlay"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Employee Productivity Prediction</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMenu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+          <li class="nav-item"><a class="nav-link active" href="/predict">Predict</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Form -->
+  <div class="form-container">
+    <h3 class="text-center mb-4">Enter Employee Details</h3>
+    <form action="/pred" method="POST">
+      <div class="row">
+        <div class="col-md-6 mb-3"><input class="form-control" name="quarter" placeholder="Quarter" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="department" placeholder="Department" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="day" placeholder="Day" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="team" placeholder="Team" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="targeted_productivity" placeholder="Targeted Productivity" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="smv" placeholder="SMV" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="over_time" placeholder="Over Time" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="incentive" placeholder="Incentive" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="idle_time" placeholder="Idle Time" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="idle_men" placeholder="Idle Men" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="no_of_style_change" placeholder="No. of Style Change" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="no_of_workers" placeholder="No. of Workers" required></div>
+        <div class="col-md-6 mb-3"><input class="form-control" name="month" placeholder="Month" required></div>
+      </div>
+      <div class="text-center mt-3">
+        <button class="btn btn-success" type="submit">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
